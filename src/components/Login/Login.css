@@ -10,7 +10,7 @@
 .or::after {
     content: '';
     width: 45%;
-    border: 2px solid #b9b9b9;
+    border: 1px solid #b9b9b9;
     border-radius: 5px;
     position: absolute;
     right: 0;
@@ -20,7 +20,7 @@
 .or::before {
     content: '';
     width: 45%;
-    border: 2px solid #b9b9b9;
+    border: 1px solid #b9b9b9;
     border-radius: 5px;
     position: absolute;
     left: 0;
