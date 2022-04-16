@@ -12,7 +12,6 @@ const Home = () => {
             <Carousel fade>
                 <Carousel.Item>
                     <img
-                        height={800}
                         className="d-block w-100 benner-image"
                         src={benner1}
                         alt="First slide"
@@ -20,7 +19,6 @@ const Home = () => {
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
-                        height={800}
                         className="d-block w-100 benner-image"
                         src={benner2}
                         alt="Second slide"
@@ -28,7 +26,6 @@ const Home = () => {
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
-                        height={800}
                         className="d-block w-100 benner-image"
                         src={benner3}
                         alt="Third slide"

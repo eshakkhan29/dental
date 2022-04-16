@@ -19,10 +19,10 @@ const Header = () => {
                         } as={Link} to="/home">Home</NavLink>
                         <NavLink className={({ isActive }) =>
                             isActive ? "navLink-active" : "navLink"
-                        } as={Link} to="/service">Service</NavLink>
+                        } as={Link} to="/blogs">Blogs</NavLink>
                         <NavLink className={({ isActive }) =>
                             isActive ? "navLink-active" : "navLink"
-                        } as={Link} to="/blogs">Blogs</NavLink>
+                        } as={Link} to="/checkout">Check out</NavLink>
                         <NavLink className={({ isActive }) =>
                             isActive ? "navLink-active" : "navLink"
                         } as={Link} to="/about">About</NavLink>

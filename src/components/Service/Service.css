@@ -1,0 +1,9 @@
+.service-card{
+    height: 580px;
+}
+.btn-primary{
+    background: #008ec6 !important;
+}
+.btn-primary:hover{
+    background: #00a7e9 !important;
+}
