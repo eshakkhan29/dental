@@ -1,3 +1,28 @@
-.form-container{
+.from-container {
     width: 30%;
+}
+
+.or {
+    color: #b9b9b9;
+    position: relative;
+}
+
+.or::after {
+    content: '';
+    width: 45%;
+    border: 2px solid #b9b9b9;
+    border-radius: 5px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+}
+
+.or::before {
+    content: '';
+    width: 45%;
+    border: 2px solid #b9b9b9;
+    border-radius: 5px;
+    position: absolute;
+    left: 0;
+    top: 50%;
 }
