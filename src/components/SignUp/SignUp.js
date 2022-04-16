@@ -12,7 +12,7 @@ const SignUp = () => {
         createUser,
         createLoading,
         createError,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification:true});
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
 
@@ -83,7 +83,7 @@ const SignUp = () => {
                     <Button className='w-100 border-0' variant="primary" type="submit">
                         Sign Up
                     </Button>
-                    <p onClick={()=>navigate('/login')} className='text-center mt-4'>Already have an Account? <span className='bnt btn-link'>Login</span></p>
+                    <p onClick={() => navigate('/login')} className='text-center mt-4'>Already have an Account? <span className='bnt btn-link'>Login</span></p>
                 </Form>
                 <div className='text-center mt-4'>
                     <div className='or fs-4'>Or</div>

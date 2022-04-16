@@ -7,3 +7,6 @@
 .btn-primary:hover{
     background: #00a7e9 !important;
 }
+.service-image{
+    border-radius: 10px;
+}

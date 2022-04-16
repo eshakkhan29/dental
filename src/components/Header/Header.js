@@ -1,18 +1,23 @@
 import React from 'react';
 import './Header.css'
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
-import logo from '../../images/favicon.ico';
+// import logo from '../../images/favicon.ico';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase.init';
+import { signOut } from 'firebase/auth';
 
 const Header = () => {
     const [user, loading, error] = useAuthState(auth);
+    const handelLogout = () => {
+        signOut(auth)
+    }
     return (
-        <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+        <Navbar className='navigation-bar' collapseOnSelect sticky='top' expand="lg" bg="light" variant="light">
             <Container>
-                <Navbar.Brand href="#home">
-                    <img height={100} src={logo} alt="" />
+                <Navbar.Brand as={Link} to="/home">
+                    {/* <img height={100} src={logo} alt="" /> */}
+                    <h3 className='logo-main fs-2'>Dental <span className='logo-sub'>Care</span></h3>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
@@ -29,13 +34,17 @@ const Header = () => {
                         <NavLink className={({ isActive }) =>
                             isActive ? "navLink-active" : "navLink"
                         } as={Link} to="/about">About</NavLink>
-                        <NavLink className={({ isActive }) =>
-                            isActive ? "navLink-active" : "navLink"
-                        } as={Link} to="/login">Login</NavLink>
+                        {!user?.uid ?
+                            <NavLink className={({ isActive }) =>
+                                isActive ? "navLink-active" : "navLink"
+                            } as={Link} to="/login">Login</NavLink>
+                            :
+                            <Button onClick={handelLogout} className='btn border-0'>Log Out</Button>
+                        }
                     </Nav>
                     <Nav>
                         {user?.uid &&
-                            <img src={user?.photoURL} width={30} height={30} className="rounded-circle" alt="" />
+                            <img src={user?.photoURL} width={30} height={30} className="rounded-circle ms-3" alt="profile" />
                         }
                     </Nav>
                 </Navbar.Collapse>
