@@ -1,5 +1,4 @@
 import React from 'react';
-import './CheckOut.css';
 import { Button, Form } from 'react-bootstrap';
 import auth from '../../Firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
