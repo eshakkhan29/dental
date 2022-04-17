@@ -1,8 +1,9 @@
+
 .from-container {
     width: 30%;
 }
 
-.other-link{
+.other-link {
     text-decoration: none;
     color: #008ec6;
     cursor: pointer;
@@ -34,7 +35,7 @@
     top: 50%;
 }
 
-@media only screen and (max-width:500px)  {
+@media only screen and (max-width:500px) {
     .from-container {
         width: 80%;
     }

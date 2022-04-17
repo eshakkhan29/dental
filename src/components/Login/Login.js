@@ -4,8 +4,10 @@ import { Button, Form } from 'react-bootstrap';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase.init';
 import { useLocation, useNavigate } from 'react-router-dom';
-import toast, { Toaster } from 'react-hot-toast';
+// import toast, { Toaster } from 'react-hot-toast';
 import Loading from '../Loading/Loading';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const [signInWithGoogle, googleUser, loading, error] = useSignInWithGoogle(auth);
@@ -34,8 +36,9 @@ const Login = () => {
     if (loading || signInLoading) {
         return <Loading></Loading>
     }
-    if (signInError) {
-        toast.error(signInError?.message)
+
+    if (signInError || reseterror || error) {
+        toast.error(signInError?.message);
     }
     if (googleUser || signInUser) {
         navigate(from, { replace: true })
@@ -48,14 +51,16 @@ const Login = () => {
     const handelForgetPassword = () => {
         if (email) {
             sendPasswordResetEmail(email)
-            toast.success('Password reset email send')
+            if (sending) {
+                toast.success('Password reset email send')
+            }
         } else {
             toast.error('please type your email')
         }
     }
-    console.log(signInError?.message);
+
     return (
-        <div className='vh-100'>
+        <div>
             <div className='m-auto from-container mt-5'>
                 <h2 className='text-center'>Login</h2>
                 <Form onSubmit={handelSubmit}>
@@ -82,7 +87,7 @@ const Login = () => {
                 <div className='text-center mt-4'>
                     <button onClick={() => signInWithGoogle()} className='btn btn-primary w-100 border-0'>Login With Google</button>
                 </div>
-                <Toaster />
+                <ToastContainer />
             </div>
         </div>
     );

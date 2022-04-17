@@ -48,10 +48,10 @@ const SignUp = () => {
     const handelSubmit = async event => {
         event.preventDefault();
         if (password !== confirmPassword) {
-            setError('Password not match');
+            return setError('Password not match');
         }
-        if (password <= 5) {
-            setError('Password minimum characters 6');
+        if (password.length < 6) {
+            return setError('Password minimum characters 6');
         }
         else {
             await createUserWithEmailAndPassword(email, password);
@@ -78,7 +78,7 @@ const SignUp = () => {
                         <Form.Label>Password</Form.Label>
                         <Form.Control onBlur={handelPassword} required type="password" placeholder="Password" />
                         {error &&
-                            <Form.Text className="text-muted">
+                            <Form.Text className="text-danger">
                                 {error}
                             </Form.Text>
                         }
