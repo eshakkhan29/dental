@@ -19,13 +19,9 @@ const Login = () => {
     const [sendPasswordResetEmail, sending, reseterror] = useSendPasswordResetEmail(auth);
 
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
 
     const handelEmail = event => {
         setEmail(event.target.value);
-    }
-    const handelPassword = event => {
-        setPassword(event.target.value);
     }
 
     const navigate = useNavigate();
@@ -36,6 +32,10 @@ const Login = () => {
         return <Loading></Loading>
     }
 
+    if (sending) {
+        toast.success('Password reset email send')
+    }
+
     if (signInError || reseterror || error) {
         toast.error(signInError?.message);
     }
@@ -44,16 +44,16 @@ const Login = () => {
     }
 
     const handelSubmit = event => {
+        const email = event.target.email.value;
+        const password = event.target.password.value;
         event.preventDefault();
         signInWithEmailAndPassword(email, password);
     }
     const handelForgetPassword = () => {
         if (email) {
             sendPasswordResetEmail(email)
-            if (sending) {
-                toast.success('Password reset email send')
-            }
-        } else {
+        }
+        else {
             toast.error('please type your email')
         }
     }
@@ -65,12 +65,12 @@ const Login = () => {
                 <Form onSubmit={handelSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control required onBlur={handelEmail} type="email" placeholder="Enter email" />
+                        <Form.Control required name='email' onBlur={handelEmail} type="email" placeholder="Enter email" />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control required onBlur={handelPassword} type="password" placeholder="Password" />
+                        <Form.Control required name='password' type="password" placeholder="Password" />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
                         <p onClick={handelForgetPassword} className='other-link'>Forget Password?</p>
