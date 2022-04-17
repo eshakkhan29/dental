@@ -2,6 +2,13 @@
     width: 30%;
 }
 
+.other-link{
+    text-decoration: none;
+    color: #008ec6;
+    cursor: pointer;
+    font-weight: 500;
+}
+
 .or {
     color: #b9b9b9;
     position: relative;

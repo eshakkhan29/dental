@@ -1,0 +1,36 @@
+.benner-image {
+    height: calc(100vh - 73px);
+    object-fit: cover;
+}
+
+.carousel-indicators [data-bs-target] {
+    width: 15px !important;
+    height: 15px !important;
+    border-radius: 50%;
+}
+
+.carousel-control-prev {
+    left: 8% !important;
+    transform: translate(-50%, -8%);
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px !important;
+    height: 50px !important;
+    background-color: #008ec6 !important;
+    border-radius: 50% !important;
+    top: 50% !important;
+}
+
+.carousel-control-next {
+    right: 8% !important;
+    transform: translate(50%, -8%);
+}
+
+@media  only screen and (max-width:500px) {
+    .benner-image{
+        height: calc(50vh - 73px);
+    object-fit: cover;
+    }
+}

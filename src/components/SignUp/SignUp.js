@@ -2,7 +2,6 @@ import { async } from '@firebase/util';
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from "react-firebase-hooks/auth";
-import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../Firebase.init';
 
@@ -42,10 +41,6 @@ const SignUp = () => {
 
     }
 
-    if (createUser?.user?.uid) {
-        toast.success('Verification Email send')
-    }
-
     if (googleUser || createUser) {
         navigate('/home')
     }
@@ -53,11 +48,16 @@ const SignUp = () => {
     const handelSubmit = async event => {
         event.preventDefault();
         if (password !== confirmPassword) {
-            setError('password not match');
+            setError('Password not match');
         }
-        // setError('');
-        await createUserWithEmailAndPassword(email, password);
-        await updateProfile({ displayName: name });
+        if (password <= 5) {
+            setError('Password minimum characters 6');
+        }
+        else {
+            await createUserWithEmailAndPassword(email, password);
+            await updateProfile({ displayName: name });
+            setError('');
+        }
     }
 
     return (
@@ -67,16 +67,16 @@ const SignUp = () => {
                 <Form onSubmit={handelSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Name</Form.Label>
-                        <Form.Control onBlur={handelName} type="text" placeholder="Enter Name" />
+                        <Form.Control onBlur={handelName} required type="text" placeholder="Enter Name" />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control onBlur={handelEmail} type="email" placeholder="Enter email" />
+                        <Form.Control onBlur={handelEmail} required type="email" placeholder="Enter email" />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control onBlur={handelPassword} type="password" placeholder="Password" />
+                        <Form.Control onBlur={handelPassword} required type="password" placeholder="Password" />
                         {error &&
                             <Form.Text className="text-muted">
                                 {error}
@@ -85,15 +85,15 @@ const SignUp = () => {
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Confirm Password</Form.Label>
-                        <Form.Control onBlur={handelConfirmPassword} type="password" placeholder="Confirm Password" />
+                        <Form.Control onBlur={handelConfirmPassword} required type="password" placeholder="Confirm Password" />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
                         <Form.Check onClick={handelCheck} type="checkbox" label="Agree Trams and Condition" />
                     </Form.Group>
-                    <Button className='w-100 border-0' variant="primary" type="submit">
+                    <Button disabled={!check} className='w-100 border-0' variant="primary" type="submit">
                         Sign Up
                     </Button>
-                    <p onClick={() => navigate('/login')} className='text-center mt-4'>Already have an Account? <span className='bnt btn-link'>Login</span></p>
+                    <p onClick={() => navigate('/login')} className='mt-4 d-inline-block'>Already have an Account? <span className='other-link'>Login</span></p>
                 </Form>
                 <div className='text-center mt-4'>
                     <div className='or fs-5'>Or</div>
@@ -101,7 +101,6 @@ const SignUp = () => {
                 <div className='text-center mt-4'>
                     <button onClick={() => signInWithGoogle()} className='btn btn-primary w-100 border-0'>Login With Google</button>
                 </div>
-                <Toaster/>
             </div>
         </div>
     );

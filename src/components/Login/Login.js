@@ -5,6 +5,7 @@ import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWith
 import auth from '../../Firebase.init';
 import { useLocation, useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
+import Loading from '../Loading/Loading';
 
 const Login = () => {
     const [signInWithGoogle, googleUser, loading, error] = useSignInWithGoogle(auth);
@@ -29,11 +30,13 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
-    
-    if (sending) {
-        toast.success('Password reset email send')
-    }
 
+    if (loading || signInLoading) {
+        return <Loading></Loading>
+    }
+    if (signInError) {
+        toast.error(signInError?.message)
+    }
     if (googleUser || signInUser) {
         navigate(from, { replace: true })
     }
@@ -43,9 +46,14 @@ const Login = () => {
         signInWithEmailAndPassword(email, password);
     }
     const handelForgetPassword = () => {
-        sendPasswordResetEmail(email)
+        if (email) {
+            sendPasswordResetEmail(email)
+            toast.success('Password reset email send')
+        } else {
+            toast.error('please type your email')
+        }
     }
-
+    console.log(signInError?.message);
     return (
         <div className='vh-100'>
             <div className='m-auto from-container mt-5'>
@@ -53,20 +61,20 @@ const Login = () => {
                 <Form onSubmit={handelSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control onBlur={handelEmail} type="email" placeholder="Enter email" />
+                        <Form.Control required onBlur={handelEmail} type="email" placeholder="Enter email" />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control onBlur={handelPassword} type="password" placeholder="Password" />
+                        <Form.Control required onBlur={handelPassword} type="password" placeholder="Password" />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                        <p onClick={handelForgetPassword} className='btn-link'>Forget Password?</p>
+                        <p onClick={handelForgetPassword} className='other-link'>Forget Password?</p>
                     </Form.Group>
                     <Button className='w-100 border-0' variant="primary" type="submit">
                         Login
                     </Button>
-                    <p onClick={() => navigate('/signup')} className='text-center mt-4'>New to dental care? <span className='bnt btn-link'>Sign Up</span></p>
+                    <p onClick={() => navigate('/signup')} className='mt-4 d-inline-block'>New to dental care? <span className='other-link'>Sign Up</span></p>
                 </Form>
                 <div className='text-center mt-4'>
                     <div className='or fs-5'>Or</div>
@@ -74,7 +82,7 @@ const Login = () => {
                 <div className='text-center mt-4'>
                     <button onClick={() => signInWithGoogle()} className='btn btn-primary w-100 border-0'>Login With Google</button>
                 </div>
-                <Toaster/>
+                <Toaster />
             </div>
         </div>
     );

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Home.css'
 import { Carousel } from 'react-bootstrap';
-import benner1 from '../../images/benner/benner1.jpg'
+import benner1 from '../../images/benner/benner1 .jpg'
 import benner2 from '../../images/benner/benner2.jpg'
 import benner3 from '../../images/benner/benner3.jpg'
 import Services from '../Services/Services';
