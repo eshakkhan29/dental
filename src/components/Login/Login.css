@@ -1,3 +1,13 @@
+.google-button{
+    background: #8adeff;
+    color: white;
+    padding: 5px 0px;
+    border-radius: 5px;
+}
+.google-button:hover{
+    background: #1bbeff;
+}
+
 
 .from-container {
     width: 30%;

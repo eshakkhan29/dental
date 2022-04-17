@@ -2,7 +2,6 @@ import React from 'react';
 import './Header.css'
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
-// import logo from '../../images/favicon.ico';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase.init';
 import { signOut } from 'firebase/auth';
@@ -16,8 +15,7 @@ const Header = () => {
         <Navbar className='navigation-bar' collapseOnSelect sticky='top' expand="lg" bg="light" variant="light">
             <Container>
                 <Navbar.Brand as={Link} to="/home">
-                    {/* <img height={100} src={logo} alt="" /> */}
-                    <h3 className='logo-main fs-2'>Dental <span className='logo-sub'>Care</span></h3>
+                    <h3 className='logo-main fs-2'>Dentist <span className='logo-sub'>Zubayer</span></h3>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">

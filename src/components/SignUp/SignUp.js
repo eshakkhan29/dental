@@ -4,6 +4,7 @@ import { Button, Form } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from "react-firebase-hooks/auth";
 import { useNavigate } from 'react-router-dom';
 import auth from '../../Firebase.init';
+import googleIcon from "../../images/google-icon.png";
 import Loading from '../Loading/Loading';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -98,7 +99,7 @@ const SignUp = () => {
                     <div className='or fs-5'>Or</div>
                 </div>
                 <div className='text-center mt-4'>
-                    <button onClick={() => signInWithGoogle()} className='btn btn-primary w-100 border-0'>Login With Google</button>
+                    <button onClick={() => signInWithGoogle()} className='google-button w-100 border-0'><img width={30} src={googleIcon} alt="" /> Login With Google</button>
                 </div>
                 <ToastContainer />
             </div>

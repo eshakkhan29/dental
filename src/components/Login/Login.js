@@ -3,6 +3,7 @@ import './Login.css'
 import { Button, Form } from 'react-bootstrap';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase.init';
+import googleIcon from "../../images/google-icon.png";
 import { useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../Loading/Loading';
 import { ToastContainer, toast } from 'react-toastify';
@@ -37,7 +38,7 @@ const Login = () => {
     }
 
     if (signInError || reseterror || error) {
-        toast.error(signInError?.message);
+        toast.error(`${signInError ? signInError.message : ''} ${reseterror ? reseterror.message : ''} ${error ? error.message : ''}`);
     }
     if (googleUser || signInUser) {
         navigate(from, { replace: true })
@@ -84,7 +85,7 @@ const Login = () => {
                     <div className='or fs-5'>Or</div>
                 </div>
                 <div className='text-center mt-4'>
-                    <button onClick={() => signInWithGoogle()} className='btn btn-primary w-100 border-0'>Login With Google</button>
+                    <button onClick={() => signInWithGoogle()} className='google-button w-100 border-0'><img width={30} src={googleIcon} alt="" /> Login With Google</button>
                 </div>
                 <ToastContainer />
             </div>
