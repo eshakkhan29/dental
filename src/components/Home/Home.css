@@ -30,7 +30,7 @@
 
 @media  only screen and (max-width:500px) {
     .benner-image{
-        height: calc(50vh - 73px);
+        height: calc(60vh - 73px);
     object-fit: cover;
     }
 }
