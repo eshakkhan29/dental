@@ -4,7 +4,6 @@ import { Button, Form } from 'react-bootstrap';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase.init';
 import { useLocation, useNavigate } from 'react-router-dom';
-// import toast, { Toaster } from 'react-hot-toast';
 import Loading from '../Loading/Loading';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
