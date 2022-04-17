@@ -42,9 +42,10 @@ const Header = () => {
                         }
                     </Nav>
                     <Nav>
-                        {user?.uid ?
+                        {user?.photoURL &&
                             <img src={user?.photoURL} width={30} height={30} className="rounded-circle ms-3" alt="profile" />
-                            :
+                        }
+                        { !user?.photoURL &&
                             <img src={profileIcon} width={30} height={30} className="rounded-circle ms-3" alt="profile" />
                         }
                     </Nav>
