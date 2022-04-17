@@ -60,9 +60,9 @@ const Login = () => {
     }
 
     return (
-        <div>
+        <div className='vh-100'>
             <div className='m-auto from-container mt-5'>
-                <h2 className='text-center'>Login</h2>
+                <h2 className='text-center title'>Login</h2>
                 <Form onSubmit={handelSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
@@ -74,14 +74,14 @@ const Login = () => {
                         <Form.Control required name='password' type="password" placeholder="Password" />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                        <p onClick={handelForgetPassword} className='other-link'>Forget Password?</p>
+                        <p onClick={handelForgetPassword} className='other-link d-inline-block'>Forget Password?</p>
                     </Form.Group>
                     <Button className='w-100 border-0' variant="primary" type="submit">
                         Login
                     </Button>
                     <p onClick={() => navigate('/signup')} className='mt-4 d-inline-block'>New to dental care? <span className='other-link'>Sign Up</span></p>
                 </Form>
-                <div className='text-center mt-4'>
+                <div className='text-center mt-2'>
                     <div className='or fs-5'>Or</div>
                 </div>
                 <div className='text-center mt-4'>

@@ -13,7 +13,7 @@ const CheckOut = () => {
         <div>
             <div className='m-auto from-container mt-5'>
 
-                    <h1>Submit your information</h1>
+                    <h2 className='text-center title'>Submit your information</h2>
                 <Form onSubmit={handelSubmit}>
 
                     <Form.Group className="mb-3">
@@ -39,7 +39,7 @@ const CheckOut = () => {
                         <Form.Label>Phone Number</Form.Label>
                         <Form.Control type="number" placeholder="Phone Number" />
                     </Form.Group>
-                    <Button variant="btn btn-primary border-0" type="submit">
+                    <Button variant="btn btn-primary w-100 border-0" type="submit">
                         Submit Info
                     </Button>
                 </Form>

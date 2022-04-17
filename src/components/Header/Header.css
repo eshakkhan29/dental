@@ -12,7 +12,7 @@
     color: #000000;
     font-weight: 500;
     margin-right: 20px;
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .navLink:hover {
@@ -25,7 +25,7 @@
     color: #008ec6;
     font-weight: 500;
     margin-right: 20px;
-    font-size: 22px;
+    font-size: 20px;
     border-bottom: 2px solid #008ec6;
 }
 .navLink-active:hover{
@@ -36,3 +36,10 @@
 
 
 /* other file css */
+.title{
+    color: #02a664;
+}
+.error-image{
+    height: calc(100vh - 72px);
+    object-fit: cover;
+}

@@ -4,6 +4,7 @@ import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase.init';
+import profileIcon from "../../images/benner/profile-icon.png";
 import { signOut } from 'firebase/auth';
 
 const Header = () => {
@@ -41,8 +42,10 @@ const Header = () => {
                         }
                     </Nav>
                     <Nav>
-                        {user?.uid &&
+                        {user?.uid ?
                             <img src={user?.photoURL} width={30} height={30} className="rounded-circle ms-3" alt="profile" />
+                            :
+                            <img src={profileIcon} width={30} height={30} className="rounded-circle ms-3" alt="profile" />
                         }
                     </Nav>
                 </Navbar.Collapse>

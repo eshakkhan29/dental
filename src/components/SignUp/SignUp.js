@@ -32,7 +32,7 @@ const SignUp = () => {
     }
 
     if (createError || updateError || googleError) {
-        toast.error(`${createError ?  createError.message : ''} ${updateError ? updateError?.message : ''} ${googleError ? googleError?.message : ''}`);
+        toast.error(`${createError ? createError.message : ''} ${updateError ? updateError?.message : ''} ${googleError ? googleError?.message : ''}`);
     }
     if (googleUser || createUser) {
         navigate('/home')
@@ -44,7 +44,7 @@ const SignUp = () => {
         const password = event.target.password.value;
         const confirmPassword = event.target.confirmPassword.value;
 
-        console.log(name,email,password,confirmPassword);
+        console.log(name, email, password, confirmPassword);
         event.preventDefault();
         if (password !== confirmPassword) {
             return setError('Password not match');
@@ -60,10 +60,9 @@ const SignUp = () => {
     }
 
     return (
-        <div
-        >
-            <div className='m-auto from-container mt-4'>
-                <h2 className='text-center'>Sign Up</h2>
+        <div className='vh-100'>
+            <div className='m-auto from-container mt-5'>
+                <h2 className='text-center title'>Sign Up</h2>
                 <Form onSubmit={handelSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Name</Form.Label>
@@ -95,7 +94,7 @@ const SignUp = () => {
                     </Button>
                     <p onClick={() => navigate('/login')} className='mt-4 d-inline-block'>Already have an Account? <span className='other-link'>Login</span></p>
                 </Form>
-                <div className='text-center mt-4'>
+                <div className='text-center mt-2'>
                     <div className='or fs-5'>Or</div>
                 </div>
                 <div className='text-center mt-4'>
