@@ -5,6 +5,7 @@ import benner1 from '../../images/benner/benner1 .jpg'
 import benner2 from '../../images/benner/benner2.jpg'
 import benner3 from '../../images/benner/benner3.jpg'
 import Services from '../Services/Services';
+import Reviews from '../Reviews/Reviews';
 
 const Home = () => {
     return (
@@ -34,6 +35,9 @@ const Home = () => {
             </Carousel>
             <div>
                 <Services></Services>
+            </div>
+            <div>
+                <Reviews></Reviews>
             </div>
         </>
     );

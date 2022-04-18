@@ -9,7 +9,6 @@ const CheckOut = () => {
     const setService = useContext(ChooseService);
     const chooseService = setService[0];
     const [user, loading, error] = useAuthState(auth);
-    const price= `$ ${chooseService?.price}`
 
     const handelSubmit = event => {
         event.preventDefault();
@@ -23,7 +22,7 @@ const CheckOut = () => {
 
                     <Form.Group className="mb-3">
                         <Form.Label>Service Price</Form.Label>
-                        <Form.Control readOnly  placeholder={price} type="text" />
+                        <Form.Control readOnly  placeholder={chooseService?.price} type="text" />
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Service Name</Form.Label>
