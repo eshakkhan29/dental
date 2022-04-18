@@ -7,9 +7,9 @@ const Review = ({ review }) => {
             <div className='review-card'>
                 <img className='rounded-circle d-block m-auto' src={image} alt="" />
                 <div className='mt-3'>
-                    <div className='d-flex align-items-center'>
+                    <div className='d-flex align-items-center justify-content-center'>
                         <h3 className='logo-main'>{name}</h3>
-                        <span className='ms-5 fw-bold'> Rating: {rating} Stars</span>
+                        <span className='ms-5 text-warning fw-bold'> Rating: {rating} Stars</span>
                     </div>
                     <p className='text-center'>{description}</p>
                 </div>

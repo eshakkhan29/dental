@@ -8,7 +8,7 @@ const Reviews = () => {
     return (
         <div className='container'>
             <h1 className='title mt-5 text-center'>My Patients Reviews</h1>
-            <div className="row mt-5 g-5">
+            <div className="row mt-5 gy-3">
                 {
                     reviews.map(review => <Review key={review.id} review={review}></Review>)
                 }
