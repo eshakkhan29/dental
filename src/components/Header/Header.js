@@ -32,7 +32,7 @@ const Header = () => {
                         } as={Link} to="/checkout">CheckOut</NavLink>
                         <NavLink className={({ isActive }) =>
                             isActive ? "navLink-active" : "navLink"
-                        } as={Link} to="/about">About</NavLink>
+                        } as={Link} to="/about">About Me</NavLink>
                         {!user?.uid ?
                             <NavLink className={({ isActive }) =>
                                 isActive ? "navLink-active" : "navLink"

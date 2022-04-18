@@ -1,7 +1,6 @@
 import React from 'react';
 import './Home.css'
 import { Carousel } from 'react-bootstrap';
-import Footer from "../Footer/Footer"
 import benner1 from '../../images/benner/benner1 .jpg'
 import benner2 from '../../images/benner/benner2.jpg'
 import benner3 from '../../images/benner/benner3.jpg'
@@ -36,7 +35,6 @@ const Home = () => {
             <div>
                 <Services></Services>
             </div>
-            <Footer></Footer>
         </>
     );
 };

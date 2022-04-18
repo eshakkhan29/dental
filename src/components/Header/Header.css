@@ -43,3 +43,6 @@
     height: calc(100vh - 72px);
     object-fit: cover;
 }
+.quarry-title{
+    color: #008ec6;
+}

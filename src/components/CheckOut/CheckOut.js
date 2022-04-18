@@ -10,7 +10,7 @@ const CheckOut = () => {
         event.preventDefault();
     }
     return (
-        <div>
+        <div className='vh-100'>
             <div className='m-auto from-container mt-5'>
 
                     <h2 className='text-center title'>Submit your information</h2>
