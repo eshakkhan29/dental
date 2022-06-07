@@ -1,4 +1,3 @@
-import { async } from '@firebase/util';
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from "react-firebase-hooks/auth";
@@ -6,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import auth from '../../Firebase.init';
 import googleIcon from "../../images/google-icon.png";
 import Loading from '../Loading/Loading';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const SignUp = () => {
@@ -39,18 +38,17 @@ const SignUp = () => {
     }
 
     const handelSubmit = async event => {
+        event.preventDefault();
         const name = event.target.name.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
         const confirmPassword = event.target.confirmPassword.value;
 
-        console.log(name, email, password, confirmPassword);
-        event.preventDefault();
         if (password !== confirmPassword) {
             return setError('Password not match');
         }
-        if (password.length < 8) {
-            return setError('Password minimum characters 8');
+        if (password.length < 7) {
+            return setError('Password minimum characters 7');
         }
         else {
             await createUserWithEmailAndPassword(email, password);
@@ -100,7 +98,6 @@ const SignUp = () => {
                 <div className='text-center mt-4'>
                     <button onClick={() => signInWithGoogle()} className='google-button w-100 border-0'><img width={30} src={googleIcon} alt="" /> Login With Google</button>
                 </div>
-                <ToastContainer />
             </div>
         </div>
     );

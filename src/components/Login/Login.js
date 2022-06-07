@@ -7,7 +7,6 @@ import googleIcon from "../../images/google-icon.png";
 import { useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../Loading/Loading';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const [signInWithGoogle, googleUser, loading, error] = useSignInWithGoogle(auth);
@@ -87,7 +86,6 @@ const Login = () => {
                 <div className='text-center mt-4'>
                     <button onClick={() => signInWithGoogle()} className='google-button w-100 border-0'><img width={30} src={googleIcon} alt="" /> Login With Google</button>
                 </div>
-                <ToastContainer />
             </div>
         </div>
     );

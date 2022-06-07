@@ -5,6 +5,9 @@ Dentist Zubayer Live site link [Dentist Zubayer](https://dental-care-818e6.web.a
 ## https://dental-care-818e6.web.app
 
 ## Feature 
+- It is a single personal website.
+- Established Google authentication system with Firebase and email-password login system.
+- Established private routing. Without login the accessing area of a visitor is limited.
 - user create email and password  sign Up
 - user login 
 - email verification mail
